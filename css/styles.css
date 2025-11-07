@@ -11223,5 +11223,14 @@ h1, h2, h3, h4, h5, h6, p, a, li, span {
   outline: none !important;
   box-shadow: none !important;
 }
+/* Move the whole top navigation bar slightly left */
+#mainNav .container {
+  margin-left: 40px; /* adjust value if needed */
+}
+
+/* Optional: keep dropdowns aligned properly */
+.navbar-nav {
+  margin-left: 0 !important;
+}
 
 /* Keep backgrounds, spacing, and everything else intact */
