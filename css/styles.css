@@ -11213,5 +11213,15 @@ h1, h2, h3, h4, h5, h6, p, a, li, span {
   color: #000000 !important;
   font-family: 'VT323', monospace !important;
 }
+/* Remove blue outline/focus glow on navbar links */
+.nav-link:focus,
+.nav-link:active,
+.dropdown-item:focus,
+.dropdown-item:active,
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
 
 /* Keep backgrounds, spacing, and everything else intact */
