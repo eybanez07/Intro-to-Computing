@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meters to Feet</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="text-center">
+  <h1>Meters to Feet Converter</h1>
+  <input type="number" id="meters" placeholder="Enter Meters">
+  <button onclick="convert()">Convert</button>
+  <p id="result"></p>
+  <a href="index.html">Back to Home</a>
+
+  <script>
+    function convert() {
+      const m = parseFloat(document.getElementById("meters").value);
+      if (isNaN(m)) return document.getElementById("result").innerText = "Please enter a number.";
+      const ft = m * 3.28084;
+      document.getElementById("result").innerText = `${m} meters = ${ft.toFixed(2)} feet`;
+    }
+  </script>
+</body>
+</html>
