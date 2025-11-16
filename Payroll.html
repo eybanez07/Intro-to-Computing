@@ -49,6 +49,29 @@
     </div>
   </div>
 
+  <!-- DELETE DIALOG MODAL -->
+  <div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete Employee</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <label class="form-label">Enter Line Number to Delete:</label>
+          <input type="number" id="deleteLineNumber" class="form-control" placeholder="e.g. 1">
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
     let payrollList = [];
 
@@ -71,15 +94,27 @@
       clearInputs();
     }
 
+    // OPEN MODAL FOR DELETE
     function deleteEmployee() {
-      const lineNumber = prompt("Enter the Line Number to delete:");
-      const index = parseInt(lineNumber) - 1;
+      const modal = new bootstrap.Modal(document.getElementById("deleteModal"));
+      modal.show();
+    }
+
+    // CONFIRM DELETE USING DIALOG
+    function confirmDelete() {
+      const lineNumber = parseInt(document.getElementById("deleteLineNumber").value);
+      const index = lineNumber - 1;
+
       if (isNaN(index) || index < 0 || index >= payrollList.length) {
         alert("Invalid Line Number!");
         return;
       }
+
       payrollList.splice(index, 1);
       updateTable();
+
+      document.getElementById("deleteLineNumber").value = "";
+      bootstrap.Modal.getInstance(document.getElementById("deleteModal")).hide();
     }
 
     function updateTable() {
@@ -106,5 +141,6 @@
       document.getElementById("deduction").value = "";
     }
   </script>
+
 </body>
 </html>
